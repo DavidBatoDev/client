@@ -1,7 +1,7 @@
 // client/src/app/components/PageContainer.tsx
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Page, TableData } from "./DocumentEditor";
 import { Table as TableIcon } from "lucide-react";
 import { Table } from "./Table";
@@ -34,6 +34,15 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   onTableSelect,
 }) => {
   const scale = zoom / 100;
+
+  // Add effect to check and delete pages without tables
+  useEffect(() => {
+    pages.forEach((page) => {
+      if (page.tables.length === 0) {
+        onDeletePage(page.id);
+      }
+    });
+  }, [pages, onDeletePage]);
 
   // Letter size dimensions in pixels (8.5" x 11" at 96 DPI)
   const letterWidth = 816;
