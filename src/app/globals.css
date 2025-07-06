@@ -1,1 +1,60 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Div-based table styling for document editor */
+div[style*="display: table"] {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+div[style*="display: table-cell"] {
+  border: 2px solid #000;
+  padding: 10px;
+  vertical-align: top;
+  min-height: 300px;
+  height: 300px;
+  box-sizing: border-box;
+}
+
+div[style*="display: table-row"] {
+  height: 300px;
+}
+
+/* Ensure table cells maintain height */
+div[style*="display: table-cell"][contenteditable="true"] {
+  min-height: 300px;
+  height: 300px;
+  box-sizing: border-box;
+}
+
+/* Table container */
+.table-container {
+  position: relative;
+  margin-bottom: 60px; /* Add space for the Add Table button */
+}
+
+/* Page container */
+.page-container {
+  position: relative;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
