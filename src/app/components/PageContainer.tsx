@@ -1,7 +1,7 @@
 // client/src/app/components/PageContainer.tsx
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Page, TableData } from "./DocumentEditor";
 import { Table as TableIcon } from "lucide-react";
 import { Table } from "./Table";
@@ -34,6 +34,9 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   onTableSelect,
 }) => {
   const scale = zoom / 100;
+  const [tableHeights, setTableHeights] = React.useState<
+    Record<string, number>
+  >({});
 
   // Add effect to check and delete pages without tables
   useEffect(() => {
@@ -50,6 +53,25 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
   const scaledWidth = letterWidth * scale;
   const scaledHeight = letterHeight * scale;
+
+  // Calculate if first table exceeds half page height
+  const currentPage = pages[currentPageIndex];
+  const firstTable = currentPage?.tables[0];
+  const firstTableHeight = firstTable
+    ? tableHeights[firstTable.id] || firstTable.height
+    : 0;
+  const halfPageHeight = letterHeight / 2;
+  const shouldHideAddTable = firstTableHeight > halfPageHeight;
+
+  const handleTableHeightChange = useCallback(
+    (tableId: string, height: number) => {
+      setTableHeights((prev) => ({
+        ...prev,
+        [tableId]: height,
+      }));
+    },
+    []
+  );
 
   return (
     <div
@@ -101,11 +123,12 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                     onSelect={onTableSelect}
                     showDeleteButton={tableData.id !== "table-default"}
                     scale={scale}
+                    onHeightChange={handleTableHeightChange}
                   />
 
-                  {/* Add Table Button after each table (if under limit) */}
-                  {page.tables.length < 2 && (
-                    <div className="flex justify-center my-4">
+                  {/* Add Table Button after each table (if under limit and not exceeding half page) */}
+                  {page.tables.length < 2 && !shouldHideAddTable && (
+                    <div className="flex justify-center">
                       <button
                         onClick={(e) => {
                           e.preventDefault();
