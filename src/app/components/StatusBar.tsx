@@ -1,3 +1,4 @@
+// client/src/app/components/StatusBar.tsx
 "use client";
 
 import React from "react";

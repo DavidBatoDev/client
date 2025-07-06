@@ -1,3 +1,4 @@
+// client/src/app/components/PageContainer.tsx
 "use client";
 
 import React from "react";
@@ -9,24 +10,28 @@ interface PageContainerProps {
   pages: Page[];
   zoom: number;
   currentPageIndex: number;
+  selectedTableId: string | null;
   onPageTablesChange: (pageId: string, tables: TableData[]) => void;
   onPageClick: (pageIndex: number) => void;
   onAddTable: (afterTableId?: string) => void;
   onAddPage: () => void;
   onDeleteTable: (tableId: string) => void;
   onDeletePage: (pageId: string) => void;
+  onTableSelect: (tableId: string) => void;
 }
 
 export const PageContainer: React.FC<PageContainerProps> = ({
   pages,
   zoom,
   currentPageIndex,
+  selectedTableId,
   onPageTablesChange,
   onPageClick,
   onAddTable,
   onAddPage,
   onDeleteTable,
   onDeletePage,
+  onTableSelect,
 }) => {
   const scale = zoom / 100;
 
@@ -67,7 +72,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
             {/* Page Content Area */}
             <div
-              className="w-full h-full p-16 outline-none resize-none overflow-hidden relative"
+              className="w-full h-full p-16 outline-none resize-none relative"
               style={{
                 fontSize: `${12 * scale}px`,
                 lineHeight: "1.6",
@@ -82,8 +87,11 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   <Table
                     id={tableData.id}
                     initialHeight={tableData.height}
+                    isSelected={selectedTableId === tableData.id}
                     onDelete={onDeleteTable}
+                    onSelect={onTableSelect}
                     showDeleteButton={tableData.id !== "table-default"}
+                    scale={scale}
                   />
 
                   {/* Add Table Button after each table (if under limit) */}

@@ -1,3 +1,4 @@
+// client/src/app/components/DocumentEditor.tsx
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -30,6 +31,7 @@ export const DocumentEditor: React.FC = () => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [zoom, setZoom] = useState(100);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedTableId, setSelectedTableId] = useState<string | null>(null);
   const editorRef = useRef<HTMLDivElement>(null);
 
   // Handle zoom with Ctrl+scroll
@@ -73,6 +75,19 @@ export const DocumentEditor: React.FC = () => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Handle clicks outside to deselect table
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.table-container') && !target.closest('.table-toolbar')) {
+        setSelectedTableId(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const addPage = () => {
@@ -137,6 +152,15 @@ export const DocumentEditor: React.FC = () => {
       (table) => table.id !== tableId
     );
     updatePageTables(currentPage.id, newTables);
+    
+    // Clear selection if deleted table was selected
+    if (selectedTableId === tableId) {
+      setSelectedTableId(null);
+    }
+  };
+
+  const handleTableSelect = (tableId: string) => {
+    setSelectedTableId(tableId);
   };
 
   return (
@@ -150,7 +174,7 @@ export const DocumentEditor: React.FC = () => {
 
       <div
         ref={editorRef}
-        className="flex-1 overflow-auto bg-gray-100 p-4"
+        className="flex-1 overflow-auto bg-gray-100 p-4 relative"
         style={{
           cursor: "default",
           userSelect: "none",
@@ -161,12 +185,14 @@ export const DocumentEditor: React.FC = () => {
             pages={pages}
             zoom={zoom}
             currentPageIndex={currentPageIndex}
+            selectedTableId={selectedTableId}
             onPageTablesChange={updatePageTables}
             onPageClick={setCurrentPageIndex}
             onAddTable={insertTable}
             onAddPage={addPage}
             onDeleteTable={deleteTable}
             onDeletePage={removePage}
+            onTableSelect={handleTableSelect}
           />
         </div>
       </div>
