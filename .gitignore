@@ -43,3 +43,5 @@ venv
 keys/
 output/
 test_images/
+__init__.py
+__pycache__
