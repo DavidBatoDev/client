@@ -1,0 +1,93 @@
+{
+  "entities": [
+    {
+      "type": "audience_name",
+      "text": "Andrei Villanueva",
+      "confidence": 0.9746296405792236,
+      "bounding_poly": {
+        "vertices": [
+          {
+            "x": 0.1667918860912323,
+            "y": 0.06260406225919724
+          },
+          {
+            "x": 0.5642374157905579,
+            "y": 0.06260406225919724
+          },
+          {
+            "x": 0.5642374157905579,
+            "y": 0.07892107963562012
+          },
+          {
+            "x": 0.1667918860912323,
+            "y": 0.07892107963562012
+          }
+        ]
+      },
+      "id": "0",
+      "style": {
+        "background_color": null,
+        "text_color": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "border_color": [
+          0.9,
+          0.9,
+          0.9
+        ],
+        "has_border": false,
+        "border_radius": 0,
+        "padding": 8,
+        "font_weight": "bold",
+        "alignment": "left"
+      }
+    },
+    {
+      "type": "chat_time",
+      "text": "10:03",
+      "confidence": 0.9772111773490906,
+      "bounding_poly": {
+        "vertices": [
+          {
+            "x": 0.05259203538298607,
+            "y": 0.018981019034981728
+          },
+          {
+            "x": 0.1427498161792755,
+            "y": 0.018981019034981728
+          },
+          {
+            "x": 0.1427498161792755,
+            "y": 0.030636031180620193
+          },
+          {
+            "x": 0.05259203538298607,
+            "y": 0.030636031180620193
+          }
+        ]
+      },
+      "id": "1",
+      "style": {
+        "background_color": null,
+        "text_color": [
+          0.4,
+          0.4,
+          0.4
+        ],
+        "border_color": [
+          0.9,
+          0.9,
+          0.9
+        ],
+        "has_border": false,
+        "border_radius": 0,
+        "padding": 8,
+        "font_weight": "normal",
+        "alignment": "left"
+      }
+    }
+  ],
+  "text": "10:03\n<\nAndrei Villanueva 9+\nPosts Photos Videos\nAndrei Villanueva\nMay 22.\nBakal ako\nKaye Chantal Pabico + 42\nLike\nComment\n5G 5G\n82\n...\n15 comments\nShare\nAndrei Villanueva\nMay 17.\nUPLB Computer Science Society ·\nFollow\nMay 17.\nTHE PRIZE POOL HAS ENTERED\nTHE GAME!\nSee more\n...\n8\nUTER SCIENC\n10.1983-AL\nOVER\nLIKHANG LARO,\nLARONG LIKHA.\nGame\nJam\nLOS BANOS 2026\n15,000PHR\nWORTH OF PRIZES AWAIT YOU\n...\n"
+}

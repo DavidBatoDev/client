@@ -1,0 +1,1360 @@
+{
+  "total_pages": 2,
+  "pages": [
+    {
+      "page_number": 1,
+      "entities": [
+        {
+          "type": "MessengerTextBox",
+          "text": "iyo hahanapan",
+          "confidence": 0.9891601204872131,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.1611519604921341,
+                "y": 0.24948959052562714
+              },
+              {
+                "x": 0.40257352590560913,
+                "y": 0.24948959052562714
+              },
+              {
+                "x": 0.40257352590560913,
+                "y": 0.2727643847465515
+              },
+              {
+                "x": 0.1611519604921341,
+                "y": 0.2727643847465515
+              }
+            ]
+          },
+          "id": "0",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "good morning",
+          "confidence": 0.9972859621047974,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.15992647409439087,
+                "y": 0.38832175731658936
+              },
+              {
+                "x": 0.39399510622024536,
+                "y": 0.38832175731658936
+              },
+              {
+                "x": 0.39399510622024536,
+                "y": 0.41282156109809875
+              },
+              {
+                "x": 0.15992647409439087,
+                "y": 0.41282156109809875
+              }
+            ]
+          },
+          "id": "1",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "Naga kana?",
+          "confidence": 0.9841172099113464,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.7561274766921997,
+                "y": 0.5283789038658142
+              },
+              {
+                "x": 0.9491421580314636,
+                "y": 0.5283789038658142
+              },
+              {
+                "x": 0.9491421580314636,
+                "y": 0.5516537427902222
+              },
+              {
+                "x": 0.7561274766921997,
+                "y": 0.5516537427902222
+              }
+            ]
+          },
+          "id": "2",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "Si charger daa",
+          "confidence": 0.9996509552001953,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.7071078419685364,
+                "y": 0.6688444018363953
+              },
+              {
+                "x": 0.9485294222831726,
+                "y": 0.6688444018363953
+              },
+              {
+                "x": 0.9485294222831726,
+                "y": 0.6921192407608032
+              },
+              {
+                "x": 0.7071078419685364,
+                "y": 0.6921192407608032
+              }
+            ]
+          },
+          "id": "3",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "iyo wait pajan ako",
+          "confidence": 0.9996880888938904,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.1617647111415863,
+                "y": 0.8084932565689087
+              },
+              {
+                "x": 0.4571078419685364,
+                "y": 0.8084932565689087
+              },
+              {
+                "x": 0.4571078419685364,
+                "y": 0.8317680954933167
+              },
+              {
+                "x": 0.1617647111415863,
+                "y": 0.8317680954933167
+              }
+            ]
+          },
+          "id": "4",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "kaka uli ko lang",
+          "confidence": 0.9999817609786987,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.1611519604921341,
+                "y": 0.871376097202301
+              },
+              {
+                "x": 0.41482841968536377,
+                "y": 0.871376097202301
+              },
+              {
+                "x": 0.41482841968536377,
+                "y": 0.894242525100708
+              },
+              {
+                "x": 0.1611519604921341,
+                "y": 0.894242525100708
+              }
+            ]
+          },
+          "id": "5",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "12 JAN 2023 AT 13:09",
+          "confidence": 0.9984329342842102,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.343137264251709,
+                "y": 0.3242139518260956
+              },
+              {
+                "x": 0.655024528503418,
+                "y": 0.3242139518260956
+              },
+              {
+                "x": 0.655024528503418,
+                "y": 0.33932217955589294
+              },
+              {
+                "x": 0.343137264251709,
+                "y": 0.33932217955589294
+              }
+            ]
+          },
+          "id": "6",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "12 JAN 2023 AT 14:27",
+          "confidence": 0.9999829530715942,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.344362735748291,
+                "y": 0.4642711281776428
+              },
+              {
+                "x": 0.6537989974021912,
+                "y": 0.4642711281776428
+              },
+              {
+                "x": 0.6537989974021912,
+                "y": 0.4793793261051178
+              },
+              {
+                "x": 0.344362735748291,
+                "y": 0.4793793261051178
+              }
+            ]
+          },
+          "id": "7",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "12 JAN 2023 AT 15:05",
+          "confidence": 0.9999881982803345,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.34375,
+                "y": 0.6035116314888
+              },
+              {
+                "x": 0.6537989974021912,
+                "y": 0.6035116314888
+              },
+              {
+                "x": 0.6537989974021912,
+                "y": 0.619436502456665
+              },
+              {
+                "x": 0.34375,
+                "y": 0.619436502456665
+              }
+            ]
+          },
+          "id": "8",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "12 JAN 2023 AT 17:30",
+          "confidence": 0.9999935626983643,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.34375,
+                "y": 0.7443854808807373
+              },
+              {
+                "x": 0.654411792755127,
+                "y": 0.7443854808807373
+              },
+              {
+                "x": 0.654411792755127,
+                "y": 0.7590853571891785
+              },
+              {
+                "x": 0.34375,
+                "y": 0.7590853571891785
+              }
+            ]
+          },
+          "id": "9",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "entities": [
+        {
+          "type": "MessengerTextBox",
+          "text": "goodnight labyuu ingatss!",
+          "confidence": 0.9992820024490356,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2647058963775635,
+                "y": 0.17313188314437866
+              },
+              {
+                "x": 0.5655637383460999,
+                "y": 0.17313188314437866
+              },
+              {
+                "x": 0.5655637383460999,
+                "y": 0.18987341225147247
+              },
+              {
+                "x": 0.2647058963775635,
+                "y": 0.18987341225147247
+              }
+            ]
+          },
+          "id": "10",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "good morning labyu!",
+          "confidence": 0.9998193383216858,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2640931308269501,
+                "y": 0.26949775218963623
+              },
+              {
+                "x": 0.5036764740943909,
+                "y": 0.26949775218963623
+              },
+              {
+                "x": 0.5036764740943909,
+                "y": 0.28623929619789124
+              },
+              {
+                "x": 0.2640931308269501,
+                "y": 0.28623929619789124
+              }
+            ]
+          },
+          "id": "11",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "goodmorninggggggg",
+          "confidence": 0.999884843826294,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.5625,
+                "y": 0.3670886158943176
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.3670886158943176
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.38342180848121643
+              },
+              {
+                "x": 0.5625,
+                "y": 0.38342180848121643
+              }
+            ]
+          },
+          "id": "12",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "namata pa sana kami hahahha",
+          "confidence": 0.999824047088623,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.4583333432674408,
+                "y": 0.4099632501602173
+              },
+              {
+                "x": 0.8088235259056091,
+                "y": 0.4099632501602173
+              },
+              {
+                "x": 0.8088235259056091,
+                "y": 0.42547979950904846
+              },
+              {
+                "x": 0.4583333432674408,
+                "y": 0.42547979950904846
+              }
+            ]
+          },
+          "id": "13",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "hanep anung oras naa",
+          "confidence": 0.9998376369476318,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2659313678741455,
+                "y": 0.46467944979667664
+              },
+              {
+                "x": 0.5226715803146362,
+                "y": 0.46467944979667664
+              },
+              {
+                "x": 0.5226715803146362,
+                "y": 0.4810126721858978
+              },
+              {
+                "x": 0.2659313678741455,
+                "y": 0.4810126721858978
+              }
+            ]
+          },
+          "id": "14",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "dae mag parapanugtong mataa",
+          "confidence": 0.9998892545700073,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2653186321258545,
+                "y": 0.5087791085243225
+              },
+              {
+                "x": 0.6305146813392639,
+                "y": 0.5087791085243225
+              },
+              {
+                "x": 0.6305146813392639,
+                "y": 0.5247039794921875
+              },
+              {
+                "x": 0.2653186321258545,
+                "y": 0.5247039794921875
+              }
+            ]
+          },
+          "id": "15",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "pa mariners na akoo mahal",
+          "confidence": 0.9996762871742249,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2665441036224365,
+                "y": 0.563086986541748
+              },
+              {
+                "x": 0.5765931606292725,
+                "y": 0.563086986541748
+              },
+              {
+                "x": 0.5765931606292725,
+                "y": 0.579011857509613
+              },
+              {
+                "x": 0.2665441036224365,
+                "y": 0.579011857509613
+              }
+            ]
+          },
+          "id": "16",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "igdi kaya dae gayo silag ang luwas",
+          "confidence": 0.9894238114356995,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.40992647409439087,
+                "y": 0.6786443591117859
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.6786443591117859
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.6949775218963623
+              },
+              {
+                "x": 0.40992647409439087,
+                "y": 0.6949775218963623
+              }
+            ]
+          },
+          "id": "17",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "si skyflakes daa jivan",
+          "confidence": 0.9999576807022095,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.5661764740943909,
+                "y": 0.7223356366157532
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.7223356366157532
+              },
+              {
+                "x": 0.8082107901573181,
+                "y": 0.7382605075836182
+              },
+              {
+                "x": 0.5661764740943909,
+                "y": 0.7382605075836182
+              }
+            ]
+          },
+          "id": "18",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "igdi kaya dae gayo silag ang luwas",
+          "confidence": 0.9995743036270142,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2647058963775635,
+                "y": 0.7970600128173828
+              },
+              {
+                "x": 0.6415441036224365,
+                "y": 0.7970600128173828
+              },
+              {
+                "x": 0.6415441036224365,
+                "y": 0.8125765323638916
+              },
+              {
+                "x": 0.2647058963775635,
+                "y": 0.8125765323638916
+              }
+            ]
+          },
+          "id": "19",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "MessengerTextBox",
+          "text": "bryy mag alarmm",
+          "confidence": 0.999858021736145,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.2659313678741455,
+                "y": 0.8374847173690796
+              },
+              {
+                "x": 0.46691176295280457,
+                "y": 0.8374847173690796
+              },
+              {
+                "x": 0.46691176295280457,
+                "y": 0.853817880153656
+              },
+              {
+                "x": 0.2659313678741455,
+                "y": 0.853817880153656
+              }
+            ]
+          },
+          "id": "20",
+          "style": {
+            "background_color": [
+              0.97,
+              0.97,
+              0.97
+            ],
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.7,
+              0.7,
+              0.7
+            ],
+            "has_border": true,
+            "border_radius": 8,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_label",
+          "text": "You replied to",
+          "confidence": 0.9966707825660706,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.6519607901573181,
+                "y": 0.6067782640457153
+              },
+              {
+                "x": 0.7763480544090271,
+                "y": 0.6067782640457153
+              },
+              {
+                "x": 0.7763480544090271,
+                "y": 0.6186198592185974
+              },
+              {
+                "x": 0.6519607901573181,
+                "y": 0.6186198592185974
+              }
+            ]
+          },
+          "id": "21",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_reply",
+          "text": "You replied to",
+          "confidence": 0.9966707825660706,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.6519607901573181,
+                "y": 0.6067782640457153
+              },
+              {
+                "x": 0.7763480544090271,
+                "y": 0.6067782640457153
+              },
+              {
+                "x": 0.7763480544090271,
+                "y": 0.6186198592185974
+              },
+              {
+                "x": 0.6519607901573181,
+                "y": 0.6186198592185974
+              }
+            ]
+          },
+          "id": "22",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_reply",
+          "text": "hanep anung oras naa",
+          "confidence": 0.9985234141349792,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.5667892098426819,
+                "y": 0.6386280059814453
+              },
+              {
+                "x": 0.8088235259056091,
+                "y": 0.6386280059814453
+              },
+              {
+                "x": 0.8088235259056091,
+                "y": 0.6537362337112427
+              },
+              {
+                "x": 0.5667892098426819,
+                "y": 0.6537362337112427
+              }
+            ]
+          },
+          "id": "23",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_reply",
+          "text": "replied to you",
+          "confidence": 0.9998125433921814,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.3296568691730499,
+                "y": 0.7668436169624329
+              },
+              {
+                "x": 0.45036765933036804,
+                "y": 0.7668436169624329
+              },
+              {
+                "x": 0.45036765933036804,
+                "y": 0.7778685092926025
+              },
+              {
+                "x": 0.3296568691730499,
+                "y": 0.7778685092926025
+              }
+            ]
+          },
+          "id": "24",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_reply",
+          "text": "replied to you",
+          "confidence": 0.9998878240585327,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.33026960492134094,
+                "y": 0.8819926381111145
+              },
+              {
+                "x": 0.44975489377975464,
+                "y": 0.8819926381111145
+              },
+              {
+                "x": 0.44975489377975464,
+                "y": 0.8934258818626404
+              },
+              {
+                "x": 0.33026960492134094,
+                "y": 0.8934258818626404
+              }
+            ]
+          },
+          "id": "25",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.2,
+              0.2,
+              0.2
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "3 FEB 2023 AT 05:45",
+          "confidence": 0.9995351433753967,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.3970588147640228,
+                "y": 0.12903225421905518
+              },
+              {
+                "x": 0.6029411554336548,
+                "y": 0.12903225421905518
+              },
+              {
+                "x": 0.6029411554336548,
+                "y": 0.13964883983135223
+              },
+              {
+                "x": 0.3970588147640228,
+                "y": 0.13964883983135223
+              }
+            ]
+          },
+          "id": "26",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "3 FEB 2023 AT 13:16",
+          "confidence": 0.9999880790710449,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.4007352888584137,
+                "y": 0.22539812326431274
+              },
+              {
+                "x": 0.5974264740943909,
+                "y": 0.22539812326431274
+              },
+              {
+                "x": 0.5974264740943909,
+                "y": 0.2360146939754486
+              },
+              {
+                "x": 0.4007352888584137,
+                "y": 0.2360146939754486
+              }
+            ]
+          },
+          "id": "27",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        },
+        {
+          "type": "chat_time",
+          "text": "3 FEB 2023 AT 13:51",
+          "confidence": 0.9999938011169434,
+          "bounding_poly": {
+            "vertices": [
+              {
+                "x": 0.4001225531101227,
+                "y": 0.3221723139286041
+              },
+              {
+                "x": 0.5968137383460999,
+                "y": 0.3221723139286041
+              },
+              {
+                "x": 0.5968137383460999,
+                "y": 0.3323805630207062
+              },
+              {
+                "x": 0.4001225531101227,
+                "y": 0.3323805630207062
+              }
+            ]
+          },
+          "id": "28",
+          "style": {
+            "background_color": null,
+            "text_color": [
+              0.4,
+              0.4,
+              0.4
+            ],
+            "border_color": [
+              0.9,
+              0.9,
+              0.9
+            ],
+            "has_border": false,
+            "border_radius": 0,
+            "padding": 10,
+            "font_weight": "normal",
+            "alignment": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "text": "8:05\n<\niyo hahanapan\n12 JAN 2023 AT 13:09\ngood morning\n12 JAN 2023 AT 14:27\n12 JAN 2023 AT 15:05\n12 JAN 2023 AT 17:30\niyo wait pajan ako\nkaka uli ko lang\n35\nNaga kana?\nSi charger daa\n8:06\n<\n+\n3 FEB 2023 AT 05:45\ngoodnight labyuu ingatss!\n3 FEB 2023 AT 13:16\ngood morning labyu!\n3 FEB 2023 AT 13:51\n35\n....\ngoodmorninggggggg\nnamata pa sana kami hahahha\nhanep anung oras naa\ndae mag parapanugtong mataa\npa mariners na akoo mahal\nYou replied to\nhanep anung oras naa\nigdi kaya dae gayo silag ang luwas\nsi skyflakes daa jivan\nreplied to you\nigdi kaya dae gayo silag ang luwas\nbryy mag alarmm\nreplied to you\nAa\n"
+}
