@@ -112,6 +112,30 @@ def generate_styled_pdf(layout_json_path, output_path, original_pdf_path=None, p
     # Get a sample style sheet
     styles = getSampleStyleSheet()
 
+    # Calculate an average line height for MessengerTextBoxes to determine a base font size.
+    # This makes font size consistent regardless of whether a text box is single or multi-line.
+    total_messenger_box_height = 0
+    total_messenger_box_lines = 0
+    
+    messenger_entities = [e for e in layout_data['entities'] if e.get('type') == 'MessengerTextBox' and e.get('bounding_poly')]
+    
+    for entity in messenger_entities:
+        vertices = entity['bounding_poly']['vertices']
+        y_coords = [v['y'] for v in vertices]
+        box_height_normalized = max(y_coords) - min(y_coords)
+        box_height = box_height_normalized * page_height
+        
+        total_messenger_box_height += box_height
+        total_messenger_box_lines += len(entity['text'].split('\n'))
+
+    base_font_size = 16 # Default value
+    if total_messenger_box_lines > 0:
+        average_line_height = total_messenger_box_height / total_messenger_box_lines
+        base_font_size = average_line_height * 0.8 # Scaling factor
+    
+    # Clamp base font size to a reasonable range
+    base_font_size = max(10, min(base_font_size, 16))
+
     # Draw image outlines first (so they appear behind text)
     for img_region in image_regions:
         img_x = img_region['x'] * page_width
@@ -159,16 +183,16 @@ def generate_styled_pdf(layout_json_path, output_path, original_pdf_path=None, p
         font_weight = style.get('font_weight', 'normal')
         alignment_str = style.get('alignment', 'left')
 
-        # Set font sizes based on entity type for visual hierarchy
+        # Set font size based on the calculated base font size to ensure consistency
         entity_type = entity.get('type', 'unknown')
         if entity_type == 'MessengerTextBox':
-            font_size = 14
+            font_size = base_font_size * 1.2
         elif entity_type == 'audience_name':
-            font_size = 15
+            font_size = base_font_size * 1.4 # Slightly larger
         elif entity_type in ['chat_time', 'chat_label', 'chat_reply', 'replied to']:
-            font_size = 10
+            font_size = base_font_size * 0.90 # Smaller
         else:
-            font_size = 12
+            font_size = base_font_size # Default for other elements
 
         # Only apply background boxes and rounded corners to MessengerTextBox entities
         if entity['type'] != 'MessengerTextBox':
