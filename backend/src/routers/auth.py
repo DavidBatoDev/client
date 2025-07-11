@@ -1,176 +1,70 @@
-"""
-Authentication router
-"""
-
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from sqlalchemy.orm import Session
-from typing import Dict, Any
-
-from ..database.connection import get_db_session
-from ..schemas.auth_schemas import UserRegister, UserLogin, Token, PasswordChange
-from ..schemas.user_schemas import UserResponse
-from ..services.auth_service import auth_service
-from ..models.users import User
+from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi.security import OAuth2PasswordRequestForm
+from db.supabase_client import supabase
+from models.user import UserCreate
+from models.token import Token
+from gotrue.errors import AuthApiError
 
 router = APIRouter()
-security = HTTPBearer()
 
 
-@router.post("/register", response_model=Dict[str, Any])
-async def register(
-    user_data: UserRegister,
-    db: Session = Depends(get_db_session)
-):
-    """
-    Register a new user
-    """
-    result = await auth_service.register_user(
-        db=db,
-        email=user_data.email,
-        username=user_data.username,
-        password=user_data.password,
-        full_name=user_data.full_name
-    )
-    
-    if not result["success"]:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=result["error"]
-        )
-    
-    return {
-        "message": "User registered successfully",
-        "user": UserResponse.from_orm(result["user"]),
-        "access_token": result["access_token"],
-        "token_type": result["token_type"]
-    }
+@router.post("/signup", status_code=status.HTTP_201_CREATED)
+async def signup(user_in: UserCreate):
+    try:
+        # Sign up the user in Supabase Auth
+        user_response = supabase.auth.sign_up({
+            "email": user_in.email,
+            "password": user_in.password,
+        })
+
+        if not user_response.user:
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Could not create user")
+
+        user_id = user_response.user.id
+
+        # Insert user profile into the 'profiles' table
+        profile_data = {
+            "id": user_id,
+            "full_name": user_in.full_name,
+            "is_translator": user_in.is_translator,
+            "avatar_url": user_in.avatar_url,
+        }
+        
+        profile_response = supabase.table('profiles').insert(profile_data).execute()
+
+        if profile_response.data is None and profile_response.error is not None:
+             # If profile creation fails, you might want to delete the auth user
+             # This part is complex due to user permissions. For now, we raise an error.
+             # In a production scenario, you'd handle this more gracefully.
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Could not create profile: {profile_response.error.message}")
 
 
-@router.post("/login", response_model=Dict[str, Any])
-async def login(
-    user_data: UserLogin,
-    db: Session = Depends(get_db_session)
-):
-    """
-    Login user
-    """
-    result = await auth_service.login_user(
-        db=db,
-        email=user_data.email,
-        password=user_data.password
-    )
-    
-    if not result["success"]:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=result["error"]
-        )
-    
-    return {
-        "message": "Login successful",
-        "user": UserResponse.from_orm(result["user"]),
-        "access_token": result["access_token"],
-        "token_type": result["token_type"]
-    }
+        return {"message": "User created successfully. Please check your email for verification."}
+
+    except AuthApiError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 
-@router.get("/me", response_model=UserResponse)
-async def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: Session = Depends(get_db_session)
-):
-    """
-    Get current user information
-    """
-    user = auth_service.get_current_user(db, credentials.credentials)
-    
-    if not user:
+@router.post("/token", response_model=Token)
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    try:
+        response = supabase.auth.sign_in_with_password({
+            "email": form_data.username,
+            "password": form_data.password,
+        })
+        if response.session and response.session.access_token:
+            return {"access_token": response.session.access_token, "token_type": "bearer"}
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect email or password",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+    except AuthApiError as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
-        )
-    
-    return UserResponse.from_orm(user)
-
-
-@router.post("/change-password")
-async def change_password(
-    password_data: PasswordChange,
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: Session = Depends(get_db_session)
-):
-    """
-    Change user password
-    """
-    user = auth_service.get_current_user(db, credentials.credentials)
-    
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
-        )
-    
-    success = auth_service.change_password(
-        db=db,
-        user_id=user.id,
-        old_password=password_data.old_password,
-        new_password=password_data.new_password
-    )
-    
-    if not success:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid old password"
-        )
-    
-    return {"message": "Password changed successfully"}
-
-
-@router.post("/logout")
-async def logout(
-    credentials: HTTPAuthorizationCredentials = Depends(security)
-):
-    """
-    Logout user (invalidate token)
-    """
-    # In a real implementation, you might want to maintain a blacklist of tokens
-    # For now, we'll just return a success message
-    return {"message": "Logged out successfully"}
-
-
-@router.get("/verify-token")
-async def verify_token(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: Session = Depends(get_db_session)
-):
-    """
-    Verify if token is valid
-    """
-    user = auth_service.get_current_user(db, credentials.credentials)
-    
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
-        )
-    
-    return {"valid": True, "user_id": user.id}
-
-
-def get_current_user_dependency(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-    db: Session = Depends(get_db_session)
-) -> User:
-    """
-    Dependency to get current user
-    """
-    user = auth_service.get_current_user(db, credentials.credentials)
-    
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
-        )
-    
-    return user 
+            detail=f"Authentication failed: {str(e)}",
+            headers={"WWW-Authenticate": "Bearer"},
+        ) 

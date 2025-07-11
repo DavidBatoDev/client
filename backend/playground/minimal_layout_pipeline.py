@@ -22,6 +22,7 @@ def minimal_layout_pipeline(input_file_path, output_dir="output", use_llm=True):
         b. Analyze layout with LLM for styling
         c. Generate a styled PDF page
     4. Merge all styled pages into a single PDF
+    5. Save combined layout information
     """
     
     print(f"\n🚀 Starting minimal layout pipeline for: {input_file_path}")
@@ -30,6 +31,9 @@ def minimal_layout_pipeline(input_file_path, output_dir="output", use_llm=True):
     temp_dir = os.path.join(output_dir, "temp_pages")
     os.makedirs(temp_dir, exist_ok=True)
     
+    # Initialize array to store all page layouts
+    all_page_layouts = []
+
     # Step 1: Convert to PDF if needed
     print("\n📄 Step 1: Converting to PDF...")
     pdf_path = convert_to_pdf(input_file_path, os.path.join(output_dir, "temp"))
@@ -138,7 +142,8 @@ def minimal_layout_pipeline(input_file_path, output_dir="output", use_llm=True):
         # Step 3c: Generate styled PDF for the page
         print(f"   📑 Generating styled PDF for page {page_num}...")
         temp_pdf_path = os.path.join(temp_dir, f"page_{i}_styled.pdf")
-        generate_styled_pdf(enhanced_layout_path, temp_pdf_path, pdf_path, page_num=i)
+        page_layout = generate_styled_pdf(enhanced_layout_path, temp_pdf_path, pdf_path, page_num=i, save_enhanced_layout=False)
+        all_page_layouts.append(page_layout)
         temp_pdf_paths.append(temp_pdf_path)
 
     # Step 4: Merge all styled PDF pages
@@ -158,6 +163,21 @@ def minimal_layout_pipeline(input_file_path, output_dir="output", use_llm=True):
         # Create an empty PDF to avoid errors
         fitz.open().save(final_pdf_path)
 
+    # Step 5: Save combined layout information
+    print("\n💾 Saving combined layout information...")
+    combined_layout = {
+        "document_info": {
+            "total_pages": len(document.pages),
+            "source_file": input_file_path
+        },
+        "pages": all_page_layouts
+    }
+    
+    layout_json_path = os.path.join(output_dir, "minimal_json_layout.json")
+    with open(layout_json_path, 'w', encoding='utf-8') as f:
+        json.dump(combined_layout, f, indent=2, ensure_ascii=False)
+    print(f"✅ Combined layout information saved to {layout_json_path}")
+
     # Clean up temporary files
     print("\n🗑️ Cleaning up temporary files...")
     for path in Path(temp_dir).glob("*"):
@@ -175,10 +195,12 @@ def minimal_layout_pipeline(input_file_path, output_dir="output", use_llm=True):
     print(f"  - Pages processed: {len(document.pages)}")
     print(f"  - Output directory: {output_dir}")
     print(f"  - Final PDF: {final_pdf_path}")
+    print(f"  - Layout JSON: {layout_json_path}")
     
     return {
         "success": True,
         "output_pdf": final_pdf_path,
+        "output_json": layout_json_path,
         "pages_processed": len(document.pages)
     }
 

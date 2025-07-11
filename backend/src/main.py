@@ -1,131 +1,68 @@
-"""
-Social Media OCR Backend API
-FastAPI application for handling image uploads, OCR processing, and layout extraction.
-"""
-
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from fastapi.security import HTTPBearer
-from contextlib import asynccontextmanager
+from routers import auth, projects, pages
+
+# This is for Swagger UI auth
+from fastapi.openapi.utils import get_openapi
 import uvicorn
-from loguru import logger
 
-from .config.settings import get_settings
-from .database.connection import init_database
-from .routers import images, ocr, layouts, auth, users
-from .middleware.rate_limiting import RateLimitMiddleware
-from .middleware.error_handling import ErrorHandlingMiddleware
+app = FastAPI()
 
-# Initialize settings
-settings = get_settings()
-
-# Security scheme
-security = HTTPBearer()
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """
-    Application lifespan events
-    """
-    # Startup
-    logger.info("Starting Social Media OCR Backend API")
-    await init_database()
-    logger.info("Database initialized successfully")
-    
-    yield
-    
-    # Shutdown
-    logger.info("Shutting down Social Media OCR Backend API")
-
-# Create FastAPI app
-app = FastAPI(
-    title=settings.APP_NAME,
-    version=settings.APP_VERSION,
-    description="AI-powered Social Media OCR Backend API",
-    docs_url="/docs" if settings.DEBUG else None,
-    redoc_url="/redoc" if settings.DEBUG else None,
-    lifespan=lifespan
-)
-
-# Add middleware
+# CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS.split(","),
+    allow_origins=["*"],  # In production, restrict this to your frontend's domain
     allow_credentials=True,
-    allow_methods=settings.ALLOWED_METHODS.split(","),
-    allow_headers=settings.ALLOWED_HEADERS.split(","),
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
-app.add_middleware(
-    TrustedHostMiddleware,
-    allowed_hosts=["*"] if settings.DEBUG else ["localhost", "127.0.0.1"]
-)
-
-app.add_middleware(ErrorHandlingMiddleware)
-app.add_middleware(RateLimitMiddleware)
 
 # Include routers
-app.include_router(
-    auth.router,
-    prefix="/api/v1/auth",
-    tags=["Authentication"]
-)
+app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
+app.include_router(projects.router, prefix="/projects", tags=["Projects"])
+app.include_router(pages.router, prefix="/pages", tags=["Pages"])
 
-app.include_router(
-    users.router,
-    prefix="/api/v1/users",
-    tags=["Users"]
-)
 
-app.include_router(
-    images.router,
-    prefix="/api/v1/images",
-    tags=["Images"]
-)
+@app.get("/", tags=["Root"])
+async def read_root():
+    return {"message": "Welcome to the Wally OCR and Canvas API"}
 
-app.include_router(
-    ocr.router,
-    prefix="/api/v1/ocr",
-    tags=["OCR Processing"]
-)
-
-app.include_router(
-    layouts.router,
-    prefix="/api/v1/layouts",
-    tags=["Layout Management"]
-)
-
-# Health check endpoint
-@app.get("/health")
-async def health_check():
-    """
-    Health check endpoint
-    """
-    return {
-        "status": "healthy",
-        "service": settings.APP_NAME,
-        "version": settings.APP_VERSION,
-        "environment": settings.ENVIRONMENT
+# Custom OpenAPI schema for JWT token auth in Swagger UI
+def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
+    
+    openapi_schema = get_openapi(
+        title="Wally Canvas API",
+        version="1.0.0",
+        description="API for managing projects, pages, and OCR processing.",
+        routes=app.routes,
+    )
+    
+    # Add security scheme for JWT
+    openapi_schema["components"]["securitySchemes"] = {
+        "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "Enter your JWT token in the format: 'Bearer &lt;token&gt;'"
+        }
     }
+    
+    # Apply security scheme to all protected endpoints
+    for path_item in openapi_schema["paths"].values():
+        for method in path_item.values():
+            # You could add more sophisticated logic here to only protect specific routes
+            # For now, this is a simple approach. A better way is to use security dependencies in routers.
+            # However, for user convenience in /docs, we can declare security globally
+            # if the endpoint is not an auth endpoint.
+             if "Authentication" not in method.get("tags", []):
+                    method["security"] = [{"BearerAuth": []}]
 
-# Root endpoint
-@app.get("/")
-async def root():
-    """
-    Root endpoint
-    """
-    return {
-        "message": "Welcome to Social Media OCR Backend API",
-        "version": settings.APP_VERSION,
-        "docs": "/docs" if settings.DEBUG else None
-    }
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
+
+app.openapi = custom_openapi
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=settings.DEBUG,
-        log_level="info"
-    ) 
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True) 
